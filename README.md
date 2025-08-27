@@ -4,15 +4,15 @@ A Python-based console application to manage and track student performance. It s
 
 **Features**
 
-Utilisation fo inheritance for child class creation - GraduateStudent from parent class Student.
-Assign scores for multiple subjects
-Find top scorers by subject
-Calculate department-wise average performance
-Validation for all the inputs possible.
+- Utilisation fo inheritance for child class creation - GraduateStudent from parent class Student.
+- Assign scores for multiple subjects.
+- Find top scorers by subject.
+- Calculate department-wise average performance.
+- Validation for all the inputs possible.
 
 1. Clone or download the repository
 
-git clone https://github.com/your-username/student-performance-tracker.git
+git clone https://github.com/ShifaliSanthosh/student-tracker.git
 
 cd student-performance-tracker
 
