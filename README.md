@@ -13,6 +13,7 @@ Validation for all the inputs possible.
 1. Clone or download the repository
 
 git clone https://github.com/your-username/student-performance-tracker.git
+
 cd student-performance-tracker
 
 2. Run the application
