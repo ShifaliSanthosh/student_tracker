@@ -1,8 +1,7 @@
 from managers.student_manager import StudentManager
 from models.student import Student, GraduateStudent
 from utils.validation import (
-    is_valid_id, is_valid_name, is_valid_department,
-    is_valid_marks, is_valid_thesis, is_valid_choice
+    is_valid_id, is_valid_name, is_valid_department, is_valid_thesis, is_valid_marks, is_valid_choice
 )
 
 
@@ -33,6 +32,9 @@ def main():
 
             if student_type.lower() == "graduate":
                 thesis = input("Thesis Title: ")
+                if not is_valid_thesis(thesis):
+                    print("Invalid thesis entry")
+                    continue
                 student = GraduateStudent(id, name, dept, thesis)
             else:
                 student = Student(id, name, dept)
@@ -47,19 +49,32 @@ def main():
 
         elif choice == "3":
             nm = input("Enter the Name for the student whose marks you want to enter: ")
-            print("Enter subjects and marks (type 'X' to finish):")
+
+            if not is_valid_name(nm):
+                print("Invalid name entry.")
+                continue
+
             student = manager.find_student_by_name(nm)
+            if student is None:
+                print(f"No student found with name: {nm}")
+                continue
+
+            print("Enter subjects and marks (type 'X' to finish):")
             while True:
                 subject = input("Subject: ")
                 if subject.upper() == 'X':
                     break
-                marks = float(input(f"Marks for {subject}: "))
-                student.add_score(subject, marks)
+                marks = input(f"Marks for {subject}: ")
+                if not is_valid_marks(marks):
+                    print("Invalid marks. Try again.")
+                    continue
+                student.add_score(subject, float(marks))
+            print("Scores added.")
+
 
         elif choice == "4":
             for student in manager.list_students():
                     print(student)
-
 
         elif choice == "5":
             sub = input("Enter the subject for checking the top scorer: ")
